@@ -165,8 +165,24 @@ void checkPallindrome(Node* head){
     cout<<"Yes";
 }
 
-void rotate(Node* head){
-    
+Node* rotate(Node* head, int k){
+    Node* last = head;
+    Node* temp = head;
+    if (head == NULL || k == 0) {
+        return head;
+    }
+    while (last->next != NULL) {
+        last = last->next;
+    }
+    while (k) {
+        head = head->next;
+        temp->next = NULL;
+        last->next = temp;
+        last = temp;
+        temp = head;
+        k--;
+    }
+    return head;
 }
 
 int main(){
