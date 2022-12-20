@@ -130,6 +130,27 @@ void nthNode(Node* head){
 	cout<<"The nth node from the end is: "<<s->data<<endl;
 }
 
+Node* merge(Node* head, Node* head1){
+    Node* ans = NULL;
+    if (head == NULL)
+        return head1;
+    else if (head1 == NULL)
+        return head;
+    if (head->data <= head1->data){
+        ans = head;
+        ans->next = merge(head->next, head1);
+    }
+    else{
+        ans = head1;
+        ans->next = merge(head,head1->next);
+    }
+    return ans;
+}
+
+void pallindrome(Node* head){
+	
+}
+
 int main(){
 	int c=10;
 	int data;
