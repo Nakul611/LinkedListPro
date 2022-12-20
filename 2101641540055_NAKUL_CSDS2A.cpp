@@ -103,9 +103,9 @@ Node* reverse(Node* head){
 }
 
 void MidNode(Node* head){
-	Node* s = head;
-	Node* f = head;
-	while(fast != NULL && fast->next != NULL){
+	Node* slow = head;
+	Node* fast = head;
+	while(fast != NULL && fast->next != NULL && ){
 		slow = slow->next;
 		fast = fast->next->next;
 	}
@@ -147,8 +147,26 @@ Node* merge(Node* head, Node* head1){
     return ans;
 }
 
-void pallindrome(Node* head){
-	
+void checkPallindrome(Node* head){
+    Node* slow = head;
+    stack<int> s;
+    while (slow != NULL) {
+        s.push(slow->data);
+        slow = slow->ptr;
+    }
+    while (head != NULL) {
+        int i = s.top();
+        s.pop();
+        if (head->data != i) {
+            cout<<"No";
+        }
+        head = head->ptr;
+    }
+    cout<<"Yes";
+}
+
+void rotate(Node* head){
+    
 }
 
 int main(){
